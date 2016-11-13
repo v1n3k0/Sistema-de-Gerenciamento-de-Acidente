@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2016 12:13:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Acidente" table="acidente" schema="public" optimistic-lock="version">
+        <id name="idAcidente" type="int">
+            <column name="id_acidente" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="periodo" class="pojos.Periodo" fetch="select">
+            <column name="id_periodo_fk" />
+        </many-to-one>
+        <many-to-one name="tipoacidente" class="pojos.Tipoacidente" fetch="select">
+            <column name="id_tipoacidente_fk" />
+        </many-to-one>
+        <many-to-one name="trecho" class="pojos.Trecho" fetch="select">
+            <column name="id_trecho_fk" />
+        </many-to-one>
+        <property name="status" type="string">
+            <column name="status" length="15" />
+        </property>
+        <property name="classificacaoAcidente" type="string">
+            <column name="classificacao_acidente" length="20" />
+        </property>
+        <property name="sentido" type="string">
+            <column name="sentido" length="20" />
+        </property>
+        <property name="qtdMortos" type="java.lang.Short">
+            <column name="qtd_mortos" />
+        </property>
+        <property name="qtdFeridosGraves" type="java.lang.Short">
+            <column name="qtd_feridos_graves" />
+        </property>
+        <property name="qtdFeridosLeves" type="java.lang.Short">
+            <column name="qtd_feridos_leves" />
+        </property>
+        <property name="qtdIlesos" type="java.lang.Short">
+            <column name="qtd_ilesos" />
+        </property>
+    </class>
+</hibernate-mapping>

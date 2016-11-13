@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/11/2016 12:13:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Periodo" table="periodo" schema="public" optimistic-lock="version">
+        <id name="idPeriodo" type="int">
+            <column name="id_periodo" />
+            <generator class="assigned" />
+        </id>
+        <property name="ano" type="java.lang.Short">
+            <column name="ano" />
+        </property>
+        <property name="anoTrimestre" type="string">
+            <column name="ano_trimestre" length="10" />
+        </property>
+        <property name="dataAcidente" type="java.lang.Integer">
+            <column name="data_acidente" />
+        </property>
+        <property name="dataHoraRegistroOcorrencia" type="timestamp">
+            <column name="data_hora_registro_ocorrencia" length="29" />
+        </property>
+        <set name="acidentes" table="acidente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_periodo_fk" />
+            </key>
+            <one-to-many class="pojos.Acidente" />
+        </set>
+    </class>
+</hibernate-mapping>
