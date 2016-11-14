@@ -1,0 +1,28 @@
+RF 09
+	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.id_periodo_fk = periodo.id_periodo and periodo.data_hora_registro_ocorrencia::text LIKE '2011-01%';
+	--Alterar ano e mes 
+
+RF 10
+	Natan vai filtrar na aplicação o dia da semana
+	
+RF 11
+	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.id_periodo_fk = periodo.id_periodo and periodo.data_hora_registro_ocorrencia::text LIKE '2010%02:%';
+	--Alterar ano e hora, para todos os anos retirar o ano do filtro
+
+RF 12
+	Select count (acidente.id_acidente) FROM acidente WHERE acidente.id_tipoacidente_fk = 13 and acidente.qtd_mortos != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2011;
+	Select count (acidente.id_acidente) FROM acidente WHERE acidente.id_tipoacidente_fk = 13 and acidente.qtd_feridos_graves != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2011;
+	Select count (acidente.id_acidente) FROM acidente WHERE acidente.id_tipoacidente_fk = 13 and acidente.qtd_feridos_leves != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2011;
+	Select count (acidente.id_acidente) FROM acidente WHERE acidente.id_tipoacidente_fk = 13 and acidente.qtd_ilesos != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2011;
+	-- Onde em cada colsulta deve-se trocar o id do tipo_acidente variando de 1 a 17. 
+
+RF 13
+	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_mortos != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_feridos_graves != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_feridos_leves != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_ilesos != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+	-- Onde deve-se alterar o ano para o desejado, para todos, excluir final do query "and periodo.ano = 2010 ;"
+
+RF 14
+	Select count (acidente.id_acidente) FROM acidente, trecho, cidade WHERE acidente.qtd_mortos != 0 and acidente.id_trecho_fk = trecho.id_trecho and trecho.id_cidade_fk = cidade.id_cidade and cidade.uf = 'MG';
+	-- Onde deve-se alterar o Estado no final da query para filtrar outros estados
