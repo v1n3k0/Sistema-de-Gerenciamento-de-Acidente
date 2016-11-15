@@ -30,7 +30,7 @@ SELECT * FROM tipoacidente where tipo_acidente like 'Colisão com objeto móvel';
 
 
 
-create index trecho_trecho on trecho using btree(trecho);
+create index trecho_trecho on trecho(trecho);
 
 drop index trecho_trecho;
 
