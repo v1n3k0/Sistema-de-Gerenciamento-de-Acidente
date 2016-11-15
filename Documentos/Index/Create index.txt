@@ -1,0 +1,38 @@
+create index cidade_uf_municipio on cidade using btree(uf, municipio);
+
+drop index cidade_uf_municipio;
+
+SELECT * FROM public.cidade where uf = 'SP' and municipio = 'Atibaia';
+
+
+
+create index periodo_data_hora_registro_ocorrencia on periodo(data_hora_registro_ocorrencia);
+
+drop index periodo_data_hora_registro_ocorrencia;
+
+SELECT * FROM periodo where data_hora_registro_ocorrencia::text like '2010-02-%';
+
+
+
+create index rodovia_br on rodovia(br);
+
+drop index rodovia_br;
+
+SELECT * FROM rodovia where br = '332';
+
+
+
+create index tipoacidente_tipo_acidente on tipoacidente(tipo_acidente);
+
+drop index tipoacidente_tipo_acidente;
+
+SELECT * FROM tipoacidente where tipo_acidente like 'Colisão com objeto móvel';
+
+
+
+create index trecho_trecho on trecho using btree(trecho);
+
+drop index trecho_trecho;
+
+SELECT * FROM trecho where trecho like 'ENTR BR-104 (TABULEIRO DO MARTINS) - ENTR BARRO DURO (MACEIÓ)';
+
