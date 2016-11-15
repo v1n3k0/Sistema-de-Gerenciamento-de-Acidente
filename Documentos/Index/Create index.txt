@@ -36,3 +36,35 @@ drop index trecho_trecho;
 
 SELECT * FROM trecho where trecho like 'ENTR BR-104 (TABULEIRO DO MARTINS) - ENTR BARRO DURO (MACEIÓ)';
 
+
+
+
+create index acidente_id_periodo_fk on acidente(id_periodo_fk);
+create index acidente_qtd_mortos on acidente(qtd_mortos);
+create index acidente_qtd_feridos_graves on acidente(qtd_feridos_graves);
+create index acidente_qtd_feridos_leves on acidente(qtd_feridos_leves);
+create index acidente_qtd_ilesos on acidente(qtd_ilesos);
+create index periodo_ano on periodo(ano);
+
+drop index acidente_id_periodo_fk;
+drop index acidente_qtd_mortos;
+drop index acidente_qtd_feridos_graves;
+drop index acidente_qtd_feridos_leves;
+drop index acidente_qtd_ilesos;
+drop index periodo_ano;
+
+Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_mortos != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_feridos_graves != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_feridos_leves != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.qtd_ilesos != 0 and acidente.id_periodo_fk = periodo.id_periodo and periodo.ano = 2010 ;
+
+
+create index acidente_qtd_mortos on acidente(qtd_mortos);
+create index acidente_id_trecho_fk on acidente(id_trecho_fk);
+create index trecho_id_cidade_fk on trecho(id_cidade_fk);
+
+drop index acidente_qtd_mortos;
+drop index acidente_id_trecho_fk;
+drop index trecho_id_cidade_fk;
+
+Select count (acidente.id_acidente) FROM acidente, trecho, cidade WHERE acidente.qtd_mortos != 0 and acidente.id_trecho_fk = trecho.id_trecho and trecho.id_cidade_fk = cidade.id_cidade and cidade.uf = 'RS';
