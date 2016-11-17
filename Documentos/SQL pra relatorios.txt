@@ -3,8 +3,12 @@ RF 09
 	--Alterar ano e mes 
 
 RF 10
-	Natan vai filtrar na aplicação o dia da semana
-	
+	SELECT COUNT (*)
+  FROM public.acidente, public.periodo WHERE periodo.id_periodo = acidente.id_periodo_fk and periodo.ano = 2015 and EXTRACT(DOW FROM periodo.data_hora_registro_ocorrencia)=5;
+  --Onde 1 é segunda ... 7 é domingo.
+  --Onde periodo.ano = ? refere-se ao ano que deseja filtrar os acidentes
+  --Para filtrar toda a base retirar "and periodo.ano = 2015"
+
 RF 11
 	Select count (acidente.id_acidente) FROM acidente, periodo WHERE acidente.id_periodo_fk = periodo.id_periodo and periodo.data_hora_registro_ocorrencia::text LIKE '2010%02:%';
 	--Alterar ano e hora, para todos os anos retirar o ano do filtro
